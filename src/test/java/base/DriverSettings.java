@@ -43,6 +43,9 @@ public class DriverSettings
 			ChromeOptions option = new ChromeOptions();
 			option.setExperimentalOption("prefs", chromePrefs);
 			option.setAcceptInsecureCerts(true);
+			// set chrome as Headless
+			//option.setHeadless(true);
+			option.addArguments("--headless");
 			Driver.driver = new ChromeDriver(option);
 			break;
 
