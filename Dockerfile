@@ -17,5 +17,5 @@ COPY Resources /build/Resources/
 WORKDIR /build/
 
 #Command to compile and package the application
-ENV MAVEN_OPTS="-Xms1G -Dhttps.protocols=TLSv1.2 -Djansi.passthrough=true"
+ENV MAVEN_OPTS="-Xms2G -Djansi.passthrough=true"
 RUN mvn -ntp test
