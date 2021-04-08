@@ -37,15 +37,17 @@ public class DriverSettings
 			break;
 
 		case "chrome" :
-			System.setProperty("webdriver.chrome.driver", FileReference.driversFilePath+File.separator+"chromedriver.exe");
+      // no need as we are installing the 2
+			//System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 			HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 			chromePrefs.put("profile.default_content_settings.popups", 0);
 			ChromeOptions option = new ChromeOptions();
 			option.setExperimentalOption("prefs", chromePrefs);
-			option.setAcceptInsecureCerts(true);
+			option.setAcceptInsecureCerts(false); // never set this to true
 			// set chrome as Headless
-			//option.setHeadless(true);
-			option.addArguments("--headless");
+			option.setHeadless(true);//option.addArguments("--headless"); //or set this
+      option.addArguments("--no-sandbox"); // as we are running as root
+      option.addArguments("--disable-dev-shm-usage"); // as we are running as root
 			Driver.driver = new ChromeDriver(option);
 			break;
 
