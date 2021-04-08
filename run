@@ -1,0 +1,2 @@
+docker image rm -f com.trello
+docker build -t com.trello .

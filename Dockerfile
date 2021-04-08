@@ -2,9 +2,7 @@
 FROM maven:3.6.1-jdk-8-alpine AS MAVEN_BUILD
 
 
-RUN apk update && apk add which chromium-chromedriver chromium
-RUN which chromium-browser
-RUN which chromedriver
+RUN apk update && apk add chromium-chromedriver chromium
 
 #Create build directory in the image and copy pom.xml
 COPY pom.xml /build/
