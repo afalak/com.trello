@@ -1,10 +1,12 @@
 package runner;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.testng.AbstractTestNGCucumberTests;
+import org.junit.runner.RunWith;
 
-@CucumberOptions(
-        features = {"src/test/java/features/loginPage.feature"},
-        glue = "steps"
-)
-public class loginPageRunner extends AbstractTestNGCucumberTests{}
+import io.cucumber.junit.Cucumber;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(features = "src/test/java/features/loginPage.feature", glue = "steps")
+public class loginPageRunner extends AbstractTestNGCucumberTests {
+}

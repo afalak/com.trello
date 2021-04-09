@@ -1,10 +1,9 @@
 #Use maven image as the base image in build stage
-FROM maven:3.8-openjdk-8-slim
+FROM maven:alpine
 #buster
 
-RUN apt-get update -y &&\
- apt-get -q install chromium-driver chromium -y &&\
- apt-get clean autoclean
+RUN apk update &&\
+  apk add which chromium-chromedriver chromium 
 
 #Create build directory in the image and copy pom.xml
 COPY pom.xml /build/
@@ -26,4 +25,4 @@ EXPOSE 4444
 #RUN mvn test
 
 # for the runner
-ENTRYPOINT [ "mvn", "-ntp" ,"clean", "test" ]
+ENTRYPOINT [ "mvn", "-ntp", "test" ]
