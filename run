@@ -1,2 +1,2 @@
-docker image rm -f com.trello
 docker build -t com.trello .
+docker run -p4444:4444 --rm -it com.trello

@@ -7,5 +7,4 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
         features = {"src/test/java/features/loginPage.feature"},
         glue = "steps"
 )
-public class loginPageRunner extends AbstractTestNGCucumberTests{
-}
+public class loginPageRunner extends AbstractTestNGCucumberTests{}

@@ -1,11 +1,16 @@
 #Use maven image as the base image in build stage
-FROM maven:3.6.1-jdk-8-alpine AS MAVEN_BUILD
+FROM maven:3.8-openjdk-8-slim
+#buster
 
-
-RUN apk update && apk add chromium-chromedriver chromium
+RUN apt-get update -y &&\
+ apt-get -q install chromium-driver chromium -y &&\
+ apt-get clean autoclean
 
 #Create build directory in the image and copy pom.xml
 COPY pom.xml /build/
+# Cache the dependencies
+RUN mvn -ntp -f /build/pom.xml dependency:resolve dependency:resolve-plugins 
+# tests
 COPY testng.xml /build/
 #Copy src directory into the build directory in the image
 COPY src /build/src/
@@ -14,6 +19,11 @@ COPY Resources /build/Resources/
 # Further command will run from this directory.
 WORKDIR /build/
 
-#Command to compile and package the application
-ENV MAVEN_OPTS="-Xms2G -Djansi.passthrough=true"
-RUN mvn -ntp test
+# 99
+EXPOSE 4444
+
+# Debug build
+#RUN mvn test
+
+# for the runner
+ENTRYPOINT [ "mvn", "-ntp" ,"test" ]

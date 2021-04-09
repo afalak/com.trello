@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 //import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -39,16 +40,18 @@ public class DriverSettings
 		case "chrome" :
       // no need as we are installing the 2
 			//System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+      System.setProperty("webdriver.chrome.whitelistedIps", "127.0.0.1");
 			HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 			chromePrefs.put("profile.default_content_settings.popups", 0);
+      ChromeDriverService svc = new ChromeDriverService.Builder().usingPort(4444).build();
 			ChromeOptions option = new ChromeOptions();
 			option.setExperimentalOption("prefs", chromePrefs);
 			option.setAcceptInsecureCerts(false); // never set this to true
 			// set chrome as Headless
-			option.setHeadless(true);//option.addArguments("--headless"); //or set this
+			option.setHeadless(true);
       option.addArguments("--no-sandbox"); // as we are running as root
       option.addArguments("--disable-dev-shm-usage"); // as we are running as root
-			Driver.driver = new ChromeDriver(option);
+			Driver.driver = new ChromeDriver(svc, option);
 			break;
 
 		default : 
