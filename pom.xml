@@ -8,7 +8,6 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <aspectj.version>1.9.6</aspectj.version>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
     <suite.file>testng.xml</suite.file>
@@ -25,7 +24,6 @@
         <configuration>
           <testFailureIgnore>true</testFailureIgnore>
           <argLine>
-            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
             -Dcucumber.options="--plugin utils.CustomCucumberAfterStepListener --plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm --tags ${tagsToRun}"
           </argLine>
           <suiteXmlFiles>
@@ -35,13 +33,6 @@
             <browser>${browser}</browser>
           </systemPropertyVariables>
         </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${aspectj.version}</version>
-          </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <artifactId>maven-clean-plugin</artifactId>

@@ -1,11 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="BOC UI AUTOMATION">
-    <test name="BOC Feature Testing">
-        <classes>
-            <class name="runner.loginPageRunner"></class>
-            
-       
-        </classes>
-    </test>
+<suite name="Tello Suite">
+  <test name="Login Feature Testing">
+    <classes>
+      <class name="runner.loginPageRunner"></class>
+    </classes>
+  </test>
 </suite>

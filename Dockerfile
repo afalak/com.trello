@@ -26,4 +26,4 @@ EXPOSE 4444
 #RUN mvn test
 
 # for the runner
-ENTRYPOINT [ "mvn", "-ntp" ,"test" ]
+ENTRYPOINT [ "mvn", "-ntp" ,"clean", "test" ]
