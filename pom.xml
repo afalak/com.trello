@@ -65,6 +65,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>net.sourceforge.htmlunit</groupId>
+      <artifactId>htmlunit</artifactId>
+      <version>2.48.0</version>
+    </dependency>
+    <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-testng</artifactId>
       <version>6.10.2</version>
@@ -82,7 +87,7 @@
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-server</artifactId>
-      <version>3.14.0</version>
+      <version>3.141.59</version>
     </dependency>
     <dependency>
       <groupId>org.testng</groupId>

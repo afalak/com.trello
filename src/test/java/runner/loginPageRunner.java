@@ -7,6 +7,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/features/loginPage.feature", glue = "steps")
+@CucumberOptions(strict = true, features = "src/test/java/features", glue = "steps", plugin = {
+    "pretty" })
 public class loginPageRunner extends AbstractTestNGCucumberTests {
+
 }

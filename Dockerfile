@@ -1,10 +1,10 @@
 #Use maven image as the base image in build stage
-FROM maven:alpine
-#buster
+FROM alpine:3.13
 
 RUN apk update &&\
-  apk add which chromium-chromedriver chromium 
+  apk add chromium-chromedriver chromium openjdk8 maven
 
+ENV MAVEN_OPTS="-Djansi.passthrough=true -Xmx2G"
 #Create build directory in the image and copy pom.xml
 COPY pom.xml /build/
 # Cache the dependencies
@@ -18,11 +18,8 @@ COPY Resources /build/Resources/
 # Further command will run from this directory.
 WORKDIR /build/
 
-# 99
-EXPOSE 4444
-
-# Debug build
-#RUN mvn test
+# build
+RUN mvn -ntp  package -DskipTests
 
 # for the runner
 ENTRYPOINT [ "mvn", "-ntp", "test" ]
