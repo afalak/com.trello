@@ -8,6 +8,6 @@ run: all
 
 push:
 	msg=`date`
-	git commit -am "done at ${msg}"
+	git commit -am "done at $msg "
 	git push
 	git pull
