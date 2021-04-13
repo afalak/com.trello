@@ -24,9 +24,6 @@
         <version>2.22.2</version>
         <configuration>
           <testFailureIgnore>true</testFailureIgnore>
-          <argLine>
-            -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm --tags ${tagsToRun}"
-          </argLine>
           <suiteXmlFiles>
             <suiteXmlFile>${suite.file}</suiteXmlFile>
           </suiteXmlFiles>
@@ -71,7 +68,17 @@
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-gherkin-messages</artifactId>
+      <version>6.10.2</version>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
       <artifactId>cucumber-testng</artifactId>
+      <version>6.10.2</version>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-picocontainer</artifactId>
       <version>6.10.2</version>
     </dependency>
     <dependency>
